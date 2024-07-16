@@ -15,7 +15,7 @@ FROM Bookings;
 
 #create the procedure
 delimiter //
-CREATE PROCEDURE CheckBooking(bookdate DATE, tableno INT)
+CREATE PROCEDURE ManageBooking(bookdate DATE, tableno INT)
 BEGIN
 	SELECT IF(BookingDate = bookdate, 
 	IF(TableNumber = tableno, concat("Table ", tableno, " is already booked"), concat("Table ", tableno, " is not booked")), 
@@ -26,4 +26,4 @@ END //
 delimiter ;
 
 #test the procedure. if no values show, then booking is available
-CALL CheckBooking("2022-11-12",1)
+CALL ManageBooking("2022-11-12",1)
